@@ -3,11 +3,14 @@
 
 #include <QDialog>
 #include "mainwindow.h" // Assurez-vous que ce fichier est inclus ici
+#include "position.h"
+
+class MainWindow;
+class Position;
 
 namespace Ui {
 class Menu;
 }
-class MainWindow;
 
 class Menu : public QDialog
 {
@@ -21,9 +24,12 @@ private slots:
     void on_BoutonArret_clicked();
     void on_BoutonDeconnexion_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Menu *ui;
-    MainWindow *mainwindow;  // Déclaration correcte de la variable
+    MainWindow *mainwindow = nullptr;
+    Position *position = nullptr;
 };
 
 #endif // MENU_H

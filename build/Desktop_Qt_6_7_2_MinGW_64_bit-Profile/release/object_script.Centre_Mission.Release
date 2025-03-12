@@ -1,0 +1,11 @@
+release/main.o
+release/mainwindow.o
+release/menu.o
+release/position.o
+release/Map_qml.o
+release/qmlcache_loader.o
+release/qrc_image.o
+release/qrc_qml_qmlcache.o
+release/moc_mainwindow.o
+release/moc_menu.o
+release/moc_position.o

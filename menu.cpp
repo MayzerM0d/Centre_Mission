@@ -1,5 +1,6 @@
 #include "menu.h"
 #include "mainwindow.h" // Ajoutez cette ligne
+#include "position.h"
 #include "ui_menu.h"
 #include <QMessageBox>
 
@@ -19,6 +20,11 @@ Menu::~Menu()
 void Menu::on_BoutonArret_clicked()
 {
     QMessageBox msgBox;
+    msgBox.setStyleSheet("QLabel{ color: white; font-size: 16px; }"
+                         "QMessageBox{ background-color: black; }"
+                         "QPushButton{ background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
+                         "QPushButton:hover{ background-color: darkgray; }");
+
     msgBox.setText("Confirmation");
     msgBox.setInformativeText("Voulez-vous vraiment arreter l'application ?");
     msgBox.setStandardButtons(QMessageBox :: Yes | QMessageBox :: No);
@@ -33,6 +39,11 @@ void Menu::on_BoutonArret_clicked()
 void Menu::on_BoutonDeconnexion_clicked()
 {
     QMessageBox msgBox;
+    msgBox.setStyleSheet("QLabel{ color: white; font-size: 16px; }"
+                         "QMessageBox{ background-color: black; }"
+                         "QPushButton{ background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
+                         "QPushButton:hover{ background-color: darkgray; }");
+
     msgBox.setText("Confirmation");
     msgBox.setInformativeText("Voulez-vous vous deconnecter ?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
@@ -47,5 +58,14 @@ void Menu::on_BoutonDeconnexion_clicked()
         mainwindow = new MainWindow();  // Crée un nouvel objet MainWindow
         mainwindow->show();
     }
+}
+
+
+void Menu::on_pushButton_clicked()
+{
+    if (!position) {
+        position = new Position();
+    }
+    position->show();
 }
 

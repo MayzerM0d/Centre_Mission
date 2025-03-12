@@ -409,12 +409,19 @@ Makefile: ../../Centre_Mission.pro C:/Qt/6.7.2/mingw_64/mkspecs/win32-g++/qmake.
 		C:/Qt/6.7.2/mingw_64/mkspecs/features/yacc.prf \
 		C:/Qt/6.7.2/mingw_64/mkspecs/features/lex.prf \
 		../../Centre_Mission.pro \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6QuickWidgets.prl \
 		C:/Qt/6.7.2/mingw_64/lib/Qt6Widgets.prl \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6Quick.prl \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6OpenGL.prl \
 		C:/Qt/6.7.2/mingw_64/lib/Qt6Gui.prl \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6QmlModels.prl \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6Qml.prl \
+		C:/Qt/6.7.2/mingw_64/lib/Qt6Network.prl \
 		C:/Qt/6.7.2/mingw_64/lib/Qt6Core.prl \
 		C:/Qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl \
 		C:/Qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf \
-		../../image.qrc
+		../../image.qrc \
+		../../qml.qrc
 	$(QMAKE) -o Makefile ..\..\Centre_Mission.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/6.7.2/mingw_64/mkspecs/features/spec_pre.prf:
 C:/Qt/6.7.2/mingw_64/mkspecs/features/device_config.prf:
@@ -755,12 +762,19 @@ C:/Qt/6.7.2/mingw_64/mkspecs/features/exceptions.prf:
 C:/Qt/6.7.2/mingw_64/mkspecs/features/yacc.prf:
 C:/Qt/6.7.2/mingw_64/mkspecs/features/lex.prf:
 ../../Centre_Mission.pro:
+C:/Qt/6.7.2/mingw_64/lib/Qt6QuickWidgets.prl:
 C:/Qt/6.7.2/mingw_64/lib/Qt6Widgets.prl:
+C:/Qt/6.7.2/mingw_64/lib/Qt6Quick.prl:
+C:/Qt/6.7.2/mingw_64/lib/Qt6OpenGL.prl:
 C:/Qt/6.7.2/mingw_64/lib/Qt6Gui.prl:
+C:/Qt/6.7.2/mingw_64/lib/Qt6QmlModels.prl:
+C:/Qt/6.7.2/mingw_64/lib/Qt6Qml.prl:
+C:/Qt/6.7.2/mingw_64/lib/Qt6Network.prl:
 C:/Qt/6.7.2/mingw_64/lib/Qt6Core.prl:
 C:/Qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl:
 C:/Qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
 ../../image.qrc:
+../../qml.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\Centre_Mission.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

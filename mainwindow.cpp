@@ -40,6 +40,7 @@ void MainWindow::on_Connexion_clicked()
         msgBox.setWindowTitle("Connexion");
         msgBox.setText("Utilisateur ou mot de passe incorrect");
         msgBox.setIcon(QMessageBox::Warning);
+
     }
 
     msgBox.exec();
