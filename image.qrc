@@ -4,5 +4,7 @@
         <file>fond.jpg</file>
         <file>icone-arreter.png</file>
         <file>icone-deconnexion.png</file>
+        <file>donnees.png</file>
+        <file>position.png</file>
     </qresource>
 </RCC>

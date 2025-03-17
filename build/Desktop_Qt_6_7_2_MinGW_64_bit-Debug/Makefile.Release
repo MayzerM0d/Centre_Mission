@@ -118,10 +118,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_image.cpp release\qrc_qml.cpp
 release/qrc_image.cpp: ../../image.qrc \
 		C:/Qt/6.7.2/mingw_64/bin/rcc.exe \
+		../../position.png \
 		../../icone-deconnexion.png \
 		../../fond.jpg \
 		../../user.png \
-		../../icone-arreter.png
+		../../icone-arreter.png \
+		../../donnees.png
 	C:\Qt\6.7.2\mingw_64\bin\rcc.exe -name image --no-zstd ..\..\image.qrc -o release\qrc_image.cpp
 
 release/qrc_qml.cpp: ../../qml.qrc \

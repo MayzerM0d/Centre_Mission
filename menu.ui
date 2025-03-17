@@ -34,6 +34,13 @@ QMessageBox {
    <item>
     <layout class="QHBoxLayout" name="PanneauArretDeconnexion">
      <item>
+      <widget class="QLabel" name="R_etat">
+       <property name="text">
+        <string>Rover connecté</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -192,9 +199,9 @@ QMessageBox {
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_19">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="Formulaire">
             <property name="text">
-             <string>Position</string>
+             <string>Formulaire de Mission</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -221,7 +228,7 @@ QMessageBox {
            <number>20</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="I_Formulaire">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -238,7 +245,17 @@ QMessageBox {
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="text">
-             <string>Allez vers la Position</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="image.qrc">
+              <normaloff>:/images/position.png</normaloff>:/images/position.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
             </property>
            </widget>
           </item>
@@ -266,9 +283,9 @@ QMessageBox {
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_11">
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="Dashboard">
             <property name="text">
-             <string>Consommation</string>
+             <string>Dashboard</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -295,29 +312,29 @@ QMessageBox {
            <number>20</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>50</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="baseSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>Allez vers la Consommation</string>
-            </property>
-           </widget>
+           <widget class="QLCDNumber" name="lcdNumber"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="leftMargin">
+           <number>20</number>
+          </property>
+          <property name="topMargin">
+           <number>20</number>
+          </property>
+          <property name="rightMargin">
+           <number>20</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QLCDNumber" name="lcdNumber_2"/>
           </item>
          </layout>
         </item>
@@ -343,9 +360,9 @@ QMessageBox {
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_16">
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="Donnee_scientifique">
             <property name="text">
-             <string>Mission</string>
+             <string>Données Scientifiques</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -372,7 +389,7 @@ QMessageBox {
            <number>20</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="I_Donnee_scientifique">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -386,7 +403,17 @@ QMessageBox {
              </size>
             </property>
             <property name="text">
-             <string>Allez vers la Mission</string>
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="image.qrc">
+              <normaloff>:/images/donnees.png</normaloff>:/images/donnees.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
             </property>
            </widget>
           </item>

@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -27,6 +28,7 @@ class Ui_Menu
 public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *PanneauArretDeconnexion;
+    QLabel *R_etat;
     QSpacerItem *horizontalSpacer_2;
     QLabel *MenuHaut;
     QSpacerItem *horizontalSpacer;
@@ -37,19 +39,21 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout_19;
-    QLabel *label;
+    QLabel *Formulaire;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton;
+    QPushButton *I_Formulaire;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_11;
-    QLabel *label_2;
+    QLabel *Dashboard;
     QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_2;
+    QLCDNumber *lcdNumber;
+    QHBoxLayout *horizontalLayout_5;
+    QLCDNumber *lcdNumber_2;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_16;
-    QLabel *label_3;
+    QLabel *Donnee_scientifique;
     QHBoxLayout *horizontalLayout_4;
-    QPushButton *pushButton_3;
+    QPushButton *I_Donnee_scientifique;
     QSpacerItem *verticalSpacer;
 
     void setupUi(QDialog *Menu)
@@ -76,6 +80,11 @@ public:
         verticalLayout->setObjectName("verticalLayout");
         PanneauArretDeconnexion = new QHBoxLayout();
         PanneauArretDeconnexion->setObjectName("PanneauArretDeconnexion");
+        R_etat = new QLabel(Menu);
+        R_etat->setObjectName("R_etat");
+
+        PanneauArretDeconnexion->addWidget(R_etat);
+
         horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         PanneauArretDeconnexion->addItem(horizontalSpacer_2);
@@ -138,11 +147,11 @@ public:
         verticalLayout_2->setContentsMargins(20, 20, 20, 20);
         verticalLayout_19 = new QVBoxLayout();
         verticalLayout_19->setObjectName("verticalLayout_19");
-        label = new QLabel(horizontalWidget);
-        label->setObjectName("label");
-        label->setAlignment(Qt::AlignCenter);
+        Formulaire = new QLabel(horizontalWidget);
+        Formulaire->setObjectName("Formulaire");
+        Formulaire->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_19->addWidget(label);
+        verticalLayout_19->addWidget(Formulaire);
 
 
         verticalLayout_2->addLayout(verticalLayout_19);
@@ -151,14 +160,18 @@ public:
         horizontalLayout_2->setSpacing(20);
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalLayout_2->setContentsMargins(20, 20, 20, 20);
-        pushButton = new QPushButton(horizontalWidget);
-        pushButton->setObjectName("pushButton");
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
-        pushButton->setMinimumSize(QSize(50, 50));
-        pushButton->setLayoutDirection(Qt::LeftToRight);
+        I_Formulaire = new QPushButton(horizontalWidget);
+        I_Formulaire->setObjectName("I_Formulaire");
+        sizePolicy.setHeightForWidth(I_Formulaire->sizePolicy().hasHeightForWidth());
+        I_Formulaire->setSizePolicy(sizePolicy);
+        I_Formulaire->setMinimumSize(QSize(50, 50));
+        I_Formulaire->setLayoutDirection(Qt::LeftToRight);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/images/position.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        I_Formulaire->setIcon(icon2);
+        I_Formulaire->setIconSize(QSize(100, 100));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(I_Formulaire);
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
@@ -172,11 +185,11 @@ public:
         verticalLayout_5->setContentsMargins(20, 20, 20, 20);
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setObjectName("verticalLayout_11");
-        label_2 = new QLabel(horizontalWidget);
-        label_2->setObjectName("label_2");
-        label_2->setAlignment(Qt::AlignCenter);
+        Dashboard = new QLabel(horizontalWidget);
+        Dashboard->setObjectName("Dashboard");
+        Dashboard->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_11->addWidget(label_2);
+        verticalLayout_11->addWidget(Dashboard);
 
 
         verticalLayout_5->addLayout(verticalLayout_11);
@@ -185,17 +198,25 @@ public:
         horizontalLayout_3->setSpacing(20);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(20, 20, 20, 20);
-        pushButton_2 = new QPushButton(horizontalWidget);
-        pushButton_2->setObjectName("pushButton_2");
-        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
-        pushButton_2->setSizePolicy(sizePolicy);
-        pushButton_2->setMinimumSize(QSize(50, 50));
-        pushButton_2->setBaseSize(QSize(0, 0));
+        lcdNumber = new QLCDNumber(horizontalWidget);
+        lcdNumber->setObjectName("lcdNumber");
 
-        horizontalLayout_3->addWidget(pushButton_2);
+        horizontalLayout_3->addWidget(lcdNumber);
 
 
         verticalLayout_5->addLayout(horizontalLayout_3);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(20);
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
+        horizontalLayout_5->setContentsMargins(20, 20, 20, 20);
+        lcdNumber_2 = new QLCDNumber(horizontalWidget);
+        lcdNumber_2->setObjectName("lcdNumber_2");
+
+        horizontalLayout_5->addWidget(lcdNumber_2);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_5);
 
 
         horizontalLayout->addLayout(verticalLayout_5);
@@ -206,11 +227,11 @@ public:
         verticalLayout_3->setContentsMargins(20, 20, 20, 20);
         verticalLayout_16 = new QVBoxLayout();
         verticalLayout_16->setObjectName("verticalLayout_16");
-        label_3 = new QLabel(horizontalWidget);
-        label_3->setObjectName("label_3");
-        label_3->setAlignment(Qt::AlignCenter);
+        Donnee_scientifique = new QLabel(horizontalWidget);
+        Donnee_scientifique->setObjectName("Donnee_scientifique");
+        Donnee_scientifique->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_16->addWidget(label_3);
+        verticalLayout_16->addWidget(Donnee_scientifique);
 
 
         verticalLayout_3->addLayout(verticalLayout_16);
@@ -219,13 +240,17 @@ public:
         horizontalLayout_4->setSpacing(20);
         horizontalLayout_4->setObjectName("horizontalLayout_4");
         horizontalLayout_4->setContentsMargins(20, 20, 20, 20);
-        pushButton_3 = new QPushButton(horizontalWidget);
-        pushButton_3->setObjectName("pushButton_3");
-        sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
-        pushButton_3->setSizePolicy(sizePolicy);
-        pushButton_3->setMinimumSize(QSize(50, 50));
+        I_Donnee_scientifique = new QPushButton(horizontalWidget);
+        I_Donnee_scientifique->setObjectName("I_Donnee_scientifique");
+        sizePolicy.setHeightForWidth(I_Donnee_scientifique->sizePolicy().hasHeightForWidth());
+        I_Donnee_scientifique->setSizePolicy(sizePolicy);
+        I_Donnee_scientifique->setMinimumSize(QSize(50, 50));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/images/donnees.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        I_Donnee_scientifique->setIcon(icon3);
+        I_Donnee_scientifique->setIconSize(QSize(100, 100));
 
-        horizontalLayout_4->addWidget(pushButton_3);
+        horizontalLayout_4->addWidget(I_Donnee_scientifique);
 
 
         verticalLayout_3->addLayout(horizontalLayout_4);
@@ -249,15 +274,15 @@ public:
     void retranslateUi(QDialog *Menu)
     {
         Menu->setWindowTitle(QCoreApplication::translate("Menu", "Dialog", nullptr));
+        R_etat->setText(QCoreApplication::translate("Menu", "Rover connect\303\251", nullptr));
         MenuHaut->setText(QCoreApplication::translate("Menu", "Menu", nullptr));
         BoutonDeconnexion->setText(QString());
         BoutonArret->setText(QString());
-        label->setText(QCoreApplication::translate("Menu", "Position", nullptr));
-        pushButton->setText(QCoreApplication::translate("Menu", "Allez vers la Position", nullptr));
-        label_2->setText(QCoreApplication::translate("Menu", "Consommation", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("Menu", "Allez vers la Consommation", nullptr));
-        label_3->setText(QCoreApplication::translate("Menu", "Mission", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("Menu", "Allez vers la Mission", nullptr));
+        Formulaire->setText(QCoreApplication::translate("Menu", "Formulaire de Mission", nullptr));
+        I_Formulaire->setText(QString());
+        Dashboard->setText(QCoreApplication::translate("Menu", "Dashboard", nullptr));
+        Donnee_scientifique->setText(QCoreApplication::translate("Menu", "Donn\303\251es Scientifiques", nullptr));
+        I_Donnee_scientifique->setText(QString());
     } // retranslateUi
 
 };
