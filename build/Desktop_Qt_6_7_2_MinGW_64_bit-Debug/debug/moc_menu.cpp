@@ -39,7 +39,7 @@ constexpr auto qt_meta_stringdata_CLASSMenuENDCLASS = QtMocHelpers::stringData(
     "on_BoutonArret_clicked",
     "",
     "on_BoutonDeconnexion_clicked",
-    "on_pushButton_clicked"
+    "on_I_Formulaire_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -85,7 +85,7 @@ Q_CONSTINIT const QMetaObject Menu::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_BoutonDeconnexion_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_pushButton_clicked'
+        // method 'on_I_Formulaire_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -99,7 +99,7 @@ void Menu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         switch (_id) {
         case 0: _t->on_BoutonArret_clicked(); break;
         case 1: _t->on_BoutonDeconnexion_clicked(); break;
-        case 2: _t->on_pushButton_clicked(); break;
+        case 2: _t->on_I_Formulaire_clicked(); break;
         default: ;
         }
     }

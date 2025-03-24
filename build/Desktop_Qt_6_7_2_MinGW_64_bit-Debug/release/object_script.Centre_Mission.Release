@@ -1,0 +1,11 @@
+release/donnees_scientifiques.o
+release/formulaire.o
+release/main.o
+release/mainwindow.o
+release/menu.o
+release/qrc_image.o
+release/qrc_qml.o
+release/moc_donnees_scientifiques.o
+release/moc_formulaire.o
+release/moc_mainwindow.o
+release/moc_menu.o

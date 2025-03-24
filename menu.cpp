@@ -1,6 +1,6 @@
 #include "menu.h"
 #include "mainwindow.h" // Ajoutez cette ligne
-#include "position.h"
+#include "formulaire.h"
 #include "ui_menu.h"
 #include <QMessageBox>
 
@@ -61,11 +61,20 @@ void Menu::on_BoutonDeconnexion_clicked()
 }
 
 
-void Menu::on_pushButton_clicked()
+void Menu::on_I_Formulaire_clicked()
 {
-    if (!position) {
-        position = new Position();
+    if (!formulaire) {
+        formulaire = new Formulaire();
     }
-    position->show();
+    formulaire->show();
+}
+
+
+void Menu::on_I_Donnee_scientifique_clicked()
+{
+    if (!donnees_scientifiques) {
+        donnees_scientifiques = new DonneesScientifiques();
+    }
+    donnees_scientifiques->show();
 }
 
