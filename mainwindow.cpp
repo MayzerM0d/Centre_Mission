@@ -30,7 +30,6 @@ void MainWindow::on_Connexion_clicked()
     if(utilisateur == "admin" && motdepasse == "admin") {
         msgBox.setWindowTitle("Connexion");
         msgBox.setText("Connecté avec succès");
-        //hide();
         msgBox.setIcon(QMessageBox::Information);
         menu = new Menu();
         menu->show();

@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quickwidgets
 
@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    connexion.cpp \
     donnees_scientifiques.cpp \
     formulaire.cpp \
     main.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
     menu.cpp
 
 HEADERS += \
+    connexion.h \
     donnees_scientifiques.h \
     formulaire.h \
     mainwindow.h \
@@ -35,3 +37,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     image.qrc \
     qml.qrc
+
+INCLUDEPATH += \
+    C:\boost_1_88_0
