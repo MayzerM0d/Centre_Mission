@@ -1,3 +1,8 @@
+/**
+* @file donnees_scientifiques.cpp
+* @brief La définition de la classe Donnees_Scientifiques
+*/
+
 #include "donnees_scientifiques.h"
 #include "ui_donnees_scientifiques.h"
 #include "menu.h"

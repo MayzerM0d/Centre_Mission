@@ -1,14 +1,23 @@
+/**
+* @file menu.h
+* @brief La déclaration de la classe Menu
+*/
+
+
 #ifndef MENU_H
 #define MENU_H
 
+#include <QDialog>
 #include "mainwindow.h" // Assurez-vous que ce fichier est inclus ici
 
-
-class MainWindow;
 
 namespace Ui {
 class Menu;
 }
+
+class MainWindow;
+class Formulaire;
+class Donnees_Scientifiques;
 
 class Menu : public QDialog
 {
@@ -22,9 +31,7 @@ private slots:
     void on_BoutonArret_clicked();
     void on_BoutonDeconnexion_clicked();
     void on_I_Formulaire_clicked();
-
     void on_I_Donnee_scientifique_clicked();
-
     void on_R_etat_windowTitleChanged(const QString &title);
     void updateEnergyBar(int value);
 
@@ -32,7 +39,9 @@ private slots:
 private:
     Ui::Menu *ui;
     MainWindow *mainwindow = nullptr;
-    Formulaire *formulaire;
+    Formulaire *formulaire = nullptr;
+    Donnees_Scientifiques *donnees_scientifiques = nullptr;
+
 
 };
 

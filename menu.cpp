@@ -1,8 +1,17 @@
+/**
+* @file menu.cpp
+* @brief La définition de la classe Menu
+*/
+
 #include "menu.h"
 #include "mainwindow.h" // Ajoutez cette ligne
 #include "formulaire.h"
 #include "ui_menu.h"
 #include <QMessageBox>
+#include <string>
+#include "connexion.h"
+
+using namespace std;
 
 Menu::Menu(QWidget *parent):
     QDialog(parent),
@@ -10,8 +19,9 @@ Menu::Menu(QWidget *parent):
 {
     ui->setupUi(this);
     this->setWindowTitle("Menu");
-    ui->progressBar->setRange(0, 100);
-    updateEnergyBar(50); // Valeur initiale
+    /*ui->progressBar->setRange(0, 100);
+    updateEnergyBar(50); // Valeur initiale*/
+
 }
 
 Menu::~Menu()
@@ -69,6 +79,10 @@ void Menu::on_I_Formulaire_clicked()
         formulaire = new Formulaire();
     }
     formulaire->show();
+    string target = "/mission";
+    connexion test;
+    test.comGET(target);
+
 }
 
 void Menu::on_I_Donnee_scientifique_clicked()
@@ -86,7 +100,7 @@ void Menu::on_I_Donnee_scientifique_clicked()
     */
 }
 
-void Menu::updateEnergyBar(int value) {
+/*void Menu::updateEnergyBar(int value) {
     ui->progressBar->setValue(value);
 
     // Calcul de la couleur en fonction du pourcentage
@@ -107,7 +121,7 @@ void Menu::updateEnergyBar(int value) {
                         ).arg(red).arg(green);
 
     ui->progressBar->setStyleSheet(style);
-}
+}*/
 
 
 

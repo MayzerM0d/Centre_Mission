@@ -1,3 +1,8 @@
+/**
+* @file mainwindow.h
+* @brief La déclaration de la classe MainWindow
+*/
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

@@ -1,64 +1,102 @@
 #include "connexion.h"
 
-#include <boost/beast/core.hpp>
-#include <boost/beast/http.hpp>
-#include <boost/beast/version.hpp>
-#include <boost/asio/connect.hpp>
-#include <boost/asio/ip/tcp.hpp>
+#include <cstdlib>
 #include <iostream>
-#include <string>
-#include <sstream>
 
+//using request_body_t = boost::beast::http::string_body;
+
+#include <boost/beast.hpp>
+#include <boost/asio.hpp>
+#include <iostream>
+
+namespace asio = boost::asio;
 namespace beast = boost::beast;
 namespace http = beast::http;
-namespace net = boost::asio;
-using tcp = net::ip::tcp;
+using tcp = asio::ip::tcp;
 
-Connexion::Connexion(const std::string& host, const std::string& port)
-    : hote_(host), port_(port)
-{}
 
-bool Connexion::seConnecter(const std::string& username, const std::string& password)
+connexion::connexion() {}
+
+std::string connexion::comPOST(std::string target,std::string dataStr)
 {
-    try {
-        net::io_context ioc;
-        tcp::resolver resolver(ioc);
-        beast::tcp_stream stream(ioc);
+    asio::io_context io_context;
+    // Résolution de l'adresse IP du serveur
+    tcp::resolver resolver(io_context);
+    auto endpoints = resolver.resolve(host, port);
 
-        auto const results = resolver.resolve(hote_, port_);
-        stream.connect(results);
+    // Établissement de la connexion TCP avec le serveur
+    tcp::socket socket(io_context);
+    asio::connect(socket, endpoints);
 
-        // Crée manuellement le corps en format texte brut ou pseudo-JSON (pas de parsing requis)
-        std::ostringstream oss;
-        oss << "username=" << username << "&password=" << password;
-        std::string body = oss.str();
+    http::request<http::string_body> req{ http::verb::post, target, 11 };
+    req.set(http::field::host, host);
+    req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
+    // Définir les données à envoyer : remplir le body avec les données
 
-        http::request<http::string_body> req{http::verb::post, "/api/login", 11};
-        req.set(http::field::host, hote_);
-        req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
-        req.set(http::field::content_type, "application/x-www-form-urlencoded");
-        req.body() = body;
-        req.prepare_payload();
+    req.body() = dataStr;
+    std::cout << "body req :" << req.body() << std::endl;
+    req.prepare_payload();
 
-        http::write(stream, req);
+    // Send the HTTP request to the remote host
+    http::write(socket, req);
 
-        beast::flat_buffer buffer;
-        http::response<http::string_body> res;
-        http::read(stream, buffer, res);
+    // This buffer is used for reading and must be persisted
+    beast::flat_buffer buffer;
 
-        std::cout << "Réponse reçue:\n" << res << std::endl;
+    // Declare a container to hold the response
+    http::response<http::string_body> res;
 
-        // Fermeture propre
-        beast::error_code ec;
-        stream.socket().shutdown(tcp::socket::shutdown_both, ec);
-        if (ec && ec != beast::errc::not_connected)
-            throw beast::system_error{ec};
+    // Receive the HTTP response
+    http::read(socket, buffer, res);
+    std::cout << "Msg: " << res.body() << std::endl;
+    std::string reponse = res.body();
+    if (socket.is_open()) socket.close();
 
-        // On considère que le statut 200 = succès
-        return res.result() == http::status::ok;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Erreur : " << e.what() << std::endl;
-        return false;
+    return reponse;
+}
+std::string connexion::comGET(std::string target)
+{
+    asio::io_context io_context;
+    // Résolution de l'adresse IP du serveur
+    tcp::resolver resolver(io_context);
+    auto endpoints = resolver.resolve(host, port);
+
+    // Établissement de la connexion TCP avec le serveur
+    tcp::socket socket(io_context);
+    asio::connect(socket, endpoints);
+
+    http::request<http::string_body> req{ http::verb::get, target, 11 };
+    req.set(http::field::host, host);
+    req.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
+
+    req.prepare_payload();
+
+    // Send the HTTP request to the remote host
+    http::write(socket, req);
+
+    // This buffer is used for reading and must be persisted
+    beast::flat_buffer buffer;
+
+    // Declare a container to hold the response
+    http::response<http::string_body> res;
+
+    // Receive the HTTP response
+    http::read(socket, buffer, res);
+    std::cout << "Msg: " << res.body() << std::endl;
+    std::string reponse = res.body();
+    if (socket.is_open()) socket.close();
+
+    return reponse;
+}
+
+void tokenize(std::string const& str, const char delim, std::vector<std::string>& out)
+{
+    size_t start;
+    size_t end = 0;
+
+    while ((start = str.find_first_not_of(delim, end)) != std::string::npos)
+    {
+        end = str.find(delim, start);
+        out.push_back(str.substr(start, end - start));
     }
 }

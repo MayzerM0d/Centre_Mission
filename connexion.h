@@ -1,14 +1,19 @@
 #ifndef CONNEXION_H
 #define CONNEXION_H
-
 #include <string>
+#include <vector>
 
-class Connexion {
+class connexion
+{
 public:
-    Connexion(const std::string& host, const std::string& port = "2222");
-    bool seConnecter(const std::string& username, const std::string& password);
-
-private:
-    std::string hote_;
-    std::string port_;
+    std::string comPOST(std::string paramOn,std::string dataStr);
+    std::string comGET(std::string paramOn);
+    connexion();
+private :
+    std::string const host = "172.18.10.21";
+    std::string const port = "5200";
+    int version = 11;
 };
+
+void tokenize(std::string const& str, const char delim, std::vector<std::string>& out);
+#endif // CONNEXION_H

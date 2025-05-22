@@ -1,3 +1,8 @@
+/**
+* @file mainwindow.cpp
+* @brief La définition de la classe MainWindow
+*/
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "menu.h"

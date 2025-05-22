@@ -1,3 +1,8 @@
+/**
+* @file donnes_scientifiques.h
+* @brief La déclaration de la classe Donnes_Scientifiques
+*/
+
 #ifndef DONNEES_SCIENTIFIQUES_H
 #define DONNEES_SCIENTIFIQUES_H
 

@@ -97,7 +97,7 @@ QMessageBox {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="image.qrc">
+        <iconset>
          <normaloff>:/images/icone-deconnexion.png</normaloff>:/images/icone-deconnexion.png</iconset>
        </property>
        <property name="iconSize">
@@ -129,7 +129,7 @@ QMessageBox {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="image.qrc">
+        <iconset>
          <normaloff>:/images/icone-arreter.png</normaloff>:/images/icone-arreter.png</iconset>
        </property>
        <property name="iconSize">
@@ -248,7 +248,7 @@ QMessageBox {
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="image.qrc">
+             <iconset>
               <normaloff>:/images/position.png</normaloff>:/images/position.png</iconset>
             </property>
             <property name="iconSize">
@@ -311,13 +311,6 @@ QMessageBox {
           <property name="bottomMargin">
            <number>20</number>
           </property>
-          <item>
-           <widget class="QProgressBar" name="progressBar">
-            <property name="value">
-             <number>24</number>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
         <item>
@@ -337,13 +330,6 @@ QMessageBox {
           <property name="bottomMargin">
            <number>20</number>
           </property>
-          <item>
-           <widget class="QProgressBar" name="progressBar_2">
-            <property name="value">
-             <number>24</number>
-            </property>
-           </widget>
-          </item>
          </layout>
         </item>
        </layout>
@@ -414,7 +400,7 @@ QMessageBox {
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="image.qrc">
+             <iconset>
               <normaloff>:/images/donnees.png</normaloff>:/images/donnees.png</iconset>
             </property>
             <property name="iconSize">
@@ -447,8 +433,6 @@ QMessageBox {
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="image.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
