@@ -19,8 +19,6 @@ Menu::Menu(QWidget *parent):
 {
     ui->setupUi(this);
     this->setWindowTitle("Menu");
-    /*ui->progressBar->setRange(0, 100);
-    updateEnergyBar(50); // Valeur initiale*/
 
 }
 
@@ -79,9 +77,6 @@ void Menu::on_I_Formulaire_clicked()
         formulaire = new Formulaire();
     }
     formulaire->show();
-    string target = "/mission";
-    connexion test;
-    test.comGET(target);
 
 }
 
