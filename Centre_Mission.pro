@@ -22,7 +22,8 @@ HEADERS += \
     donnees_scientifiques.h \
     formulaire.h \
     mainwindow.h \
-    menu.h
+    menu.h \
+    trim.h
 
 FORMS += \
     donnees_scientifiques.ui \

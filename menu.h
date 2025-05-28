@@ -33,8 +33,8 @@ private slots:
     void on_I_Formulaire_clicked();
     void on_I_Donnee_scientifique_clicked();
     void on_R_etat_windowTitleChanged(const QString &title);
+    void fetchEnergyData();
     void updateEnergyBar(int value);
-
 
 private:
     Ui::Menu *ui;

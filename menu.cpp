@@ -1,25 +1,37 @@
 /**
 * @file menu.cpp
-* @brief La définition de la classe Menu
+* @brief Définition de la classe Menu
 */
 
 #include "menu.h"
-#include "mainwindow.h" // Ajoutez cette ligne
+#include "mainwindow.h"
 #include "formulaire.h"
 #include "ui_menu.h"
+
 #include <QMessageBox>
+#include <QTimer>
+#include <QString>
+
 #include <string>
+#include <vector>
+#include <algorithm>
+
 #include "connexion.h"
+#include "trim.h"
 
 using namespace std;
 
-Menu::Menu(QWidget *parent):
-    QDialog(parent),
+Menu::Menu(QWidget *parent)
+    : QDialog(parent),
     ui(new Ui::Menu)
 {
     ui->setupUi(this);
     this->setWindowTitle("Menu");
 
+    // Timer pour mise à jour des données d'énergie toutes les 5 secondes
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Menu::fetchEnergyData);
+    timer->start(5000);
 }
 
 Menu::~Menu()
@@ -30,46 +42,44 @@ Menu::~Menu()
 void Menu::on_BoutonArret_clicked()
 {
     QMessageBox msgBox;
-    msgBox.setStyleSheet("QLabel{ color: white; font-size: 16px; }"
-                         "QMessageBox{ background-color: black; }"
-                         "QPushButton{ background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
-                         "QPushButton:hover{ background-color: darkgray; }");
+    msgBox.setStyleSheet(
+        "QLabel { color: white; font-size: 16px; }"
+        "QMessageBox { background-color: black; }"
+        "QPushButton { background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
+        "QPushButton:hover { background-color: darkgray; }"
+        );
 
     msgBox.setText("Confirmation");
-    msgBox.setInformativeText("Voulez-vous vraiment arreter l'application ?");
-    msgBox.setStandardButtons(QMessageBox :: Yes | QMessageBox :: No);
-    msgBox.setDefaultButton(QMessageBox :: No);
-    int ret = msgBox.exec();
-    if (ret == QMessageBox :: Yes) {
-        QApplication :: quit();
+    msgBox.setInformativeText("Voulez-vous vraiment arrêter l'application ?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+
+    if (msgBox.exec() == QMessageBox::Yes) {
+        QApplication::quit();
     }
 }
-
 
 void Menu::on_BoutonDeconnexion_clicked()
 {
     QMessageBox msgBox;
-    msgBox.setStyleSheet("QLabel{ color: white; font-size: 16px; }"
-                         "QMessageBox{ background-color: black; }"
-                         "QPushButton{ background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
-                         "QPushButton:hover{ background-color: darkgray; }");
+    msgBox.setStyleSheet(
+        "QLabel { color: white; font-size: 16px; }"
+        "QMessageBox { background-color: black; }"
+        "QPushButton { background-color: gray; color: white; border-radius: 5px; padding: 5px; }"
+        "QPushButton:hover { background-color: darkgray; }"
+        );
 
     msgBox.setText("Confirmation");
-    msgBox.setInformativeText("Voulez-vous vous deconnecter ?");
+    msgBox.setInformativeText("Voulez-vous vous déconnecter ?");
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
-    int ret = msgBox.exec();
 
-    if (ret == QMessageBox::Yes) {
-        // Fermer la fenêtre du menu
+    if (msgBox.exec() == QMessageBox::Yes) {
         this->close();
-
-        // Réouvrir la fenêtre de connexion
-        mainwindow = new MainWindow();  // Crée un nouvel objet MainWindow
+        mainwindow = new MainWindow();
         mainwindow->show();
     }
 }
-
 
 void Menu::on_I_Formulaire_clicked()
 {
@@ -77,28 +87,47 @@ void Menu::on_I_Formulaire_clicked()
         formulaire = new Formulaire();
     }
     formulaire->show();
-
 }
 
 void Menu::on_I_Donnee_scientifique_clicked()
 {
-    // Implémentez le traitement du clic ici
-    // Par exemple :
     QMessageBox::information(this, "Données Scientifiques", "Bouton Données Scientifiques cliqué");
-
-    // Ou si vous voulez ouvrir une nouvelle fenêtre :
-    /*
-    if (!donneesScientifiquesWindow) {
-        donneesScientifiquesWindow = new DonneesScientifiquesWindow(this);
-    }
-    donneesScientifiquesWindow->show();
-    */
 }
 
-/*void Menu::updateEnergyBar(int value) {
-    ui->progressBar->setValue(value);
+void Menu::fetchEnergyData()
+{
+    connexion con;
+    string response = con.comGET("/energie");
 
-    // Calcul de la couleur en fonction du pourcentage
+    vector<string> lines;
+    tokenize(response, '\n', lines);
+    if (lines.empty()) return;
+
+    vector<string> tokens;
+    tokenize(lines.back(), ',', tokens);
+
+    string consStr, restStr;
+
+    for (const auto &token : tokens) {
+        if (token.find("Consommées:") != string::npos) {
+            consStr = trim(token.substr(token.find(":") + 1));
+        } else if (token.find("Restantes:") != string::npos) {
+            restStr = trim(token.substr(token.find(":") + 1));
+        }
+    }
+
+    if (!consStr.empty() && !restStr.empty()) {
+        int cons = stoi(consStr);
+        int rest = stoi(restStr);
+
+        ui->Energie_C->setValue(cons);
+        ui->Energie_R->setValue(rest);
+        updateEnergyBar(rest);
+    }
+}
+
+void Menu::updateEnergyBar(int value)
+{
     int red = qMin(255, (100 - value) * 255 / 50);
     int green = qMin(255, value * 255 / 50);
 
@@ -107,16 +136,13 @@ void Menu::on_I_Donnee_scientifique_clicked()
                         "border: 2px solid #424242;"
                         "border-radius: 5px;"
                         "text-align: center;"
-                        "color: white;"  // Couleur du texte
+                        "color: white;"
                         "}"
                         "QProgressBar::chunk {"
                         "background-color: rgb(%1, %2, 0);"
-                        "border-radius: 3px;"  // Coins arrondis pour le remplissage
-                        "}"
-                        ).arg(red).arg(green);
+                        "border-radius: 3px;"
+                        "}").arg(red).arg(green);
 
-    ui->progressBar->setStyleSheet(style);
-}*/
-
-
-
+    ui->Energie_C->setStyleSheet(style);
+    ui->Energie_R->setStyleSheet(style);
+}
