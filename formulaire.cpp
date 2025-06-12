@@ -6,6 +6,7 @@
 #include "formulaire.h"
 #include "ui_formulaire.h"
 #include "menu.h"
+#include "distance.h"
 #include <QMessageBox>
 
 Formulaire::Formulaire(QWidget *parent)
@@ -29,9 +30,16 @@ Formulaire::~Formulaire()
 void Formulaire::on_pushButton_Conf_clicked()
 {
     QMessageBox msgBox;
+    distance parcours;
     QString valColonneX = QString::number(valX);
     QString valColonneY = QString::number(valY);
     QString nMissionId = QString("Mission n° ") + QString::number(nbmission);
+
+    valDist = parcours.calcDistance(valX,valY);
+    valAng = parcours.calcAngle(valX,valY);
+
+    QString valDistance = QString::number(valDist);
+    QString valAngle = QString::number(valAng);
 
     if (valX == 0 && valY == 0)
     {
@@ -42,13 +50,11 @@ void Formulaire::on_pushButton_Conf_clicked()
     }
     else
     {
-
-        QString valDistance = QString::number(valDist);
-
         ui->tableWidgetPoints->setItem(id_mission,0, new QTableWidgetItem(nMissionId));
         ui->tableWidgetPoints->setItem(id_mission,1, new QTableWidgetItem(valColonneX));
         ui->tableWidgetPoints->setItem(id_mission,2, new QTableWidgetItem(valColonneY));
-        ui->tableWidgetPoints->setItem(id_mission,2, new QTableWidgetItem(valColonneY));
+        ui->tableWidgetPoints->setItem(id_mission,3, new QTableWidgetItem(valDistance));
+        ui->tableWidgetPoints->setItem(id_mission,4, new QTableWidgetItem(valAngle));
         valX = 0;
         valY = 0;
         ui->lcdNumber_X->display(valX);
@@ -319,6 +325,7 @@ void Formulaire::on_pushButton_Del_clicked()
             ui->tableWidgetPoints->clearContents();
         }
         id_mission--;
+        nbmission--;
 
     }
 }

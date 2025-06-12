@@ -57,10 +57,10 @@ private:
     Menu *menu;
     int valX = 0;
     int valY = 0;
-    int valDist = 0;
-    double valAngle = 0;
+    float valDist = 0;
+    double valAng = 0;
     int mission[2][15];
-    int nbmission = 0;
+    int nbmission = 1;
     int id_mission = 0;
     int select = -1;
 };

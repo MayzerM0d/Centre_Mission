@@ -7,13 +7,15 @@
 #define DONNEES_SCIENTIFIQUES_H
 
 #include <QDialog>
+#include <QtWidgets>
+#include <QtCharts>
 #include "menu.h"
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
 class Donnees_Scientifiques;
 }
-
-class Menu;
+QT_END_NAMESPACE
 
 class Donnees_Scientifiques : public QDialog
 {
@@ -25,6 +27,10 @@ public:
 
 private:
     Ui::Donnees_Scientifiques *ui;
+    Menu *menu;
+    QChartView *graphique; // un widget pour afficher un graphe
+    QChart *graphe; // la représentation d'un graphe
+    QLineSeries *courbe; // les données
 };
 
 #endif // DONNEES_SCIENTIFIQUES_H

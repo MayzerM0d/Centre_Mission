@@ -27,6 +27,8 @@ public:
 private slots:
     void on_Connexion_clicked();
 
+    void on_CreerCompte_clicked();
+
 private:
     Ui::MainWindow *ui;
     Menu *menu;

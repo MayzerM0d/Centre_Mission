@@ -491,6 +491,16 @@
            <string>Y</string>
           </property>
          </column>
+         <column>
+          <property name="text">
+           <string>Distance (m)</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Angle (en °)</string>
+          </property>
+         </column>
         </widget>
        </item>
        <item>

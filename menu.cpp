@@ -109,7 +109,7 @@ void Menu::fetchEnergyData()
     string consStr, restStr;
 
     for (const auto &token : tokens) {
-        if (token.find("Consommées:") != string::npos) {
+        if (token.find("Consommees:") != string::npos) {
             consStr = trim(token.substr(token.find(":") + 1));
         } else if (token.find("Restantes:") != string::npos) {
             restStr = trim(token.substr(token.find(":") + 1));

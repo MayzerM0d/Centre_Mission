@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui charts network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,6 +11,7 @@ LIBS += -lws2_32
 
 SOURCES += \
     connexion.cpp \
+    distance.cpp \
     donnees_scientifiques.cpp \
     formulaire.cpp \
     main.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 HEADERS += \
     connexion.h \
+    distance.h \
     donnees_scientifiques.h \
     formulaire.h \
     mainwindow.h \
