@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>687</width>
-    <height>750</height>
+    <height>864</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -86,7 +86,7 @@ QMessageBox {
       <x>100</x>
       <y>130</y>
       <width>481</width>
-      <height>541</height>
+      <height>620</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -118,7 +118,7 @@ QMessageBox {
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>460</y>
+       <y>540</y>
        <width>381</width>
        <height>61</height>
       </rect>
@@ -192,6 +192,19 @@ QMessageBox {
      </property>
      <property name="text">
       <string>Mot de Passe</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CreerCompte">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>460</y>
+       <width>381</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Créer un Compte</string>
      </property>
     </widget>
    </widget>
